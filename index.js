@@ -2,7 +2,7 @@ require('dotenv').config();
 const http = require("http");
 const fs = require("fs");
 var requests = require("requests");
-
+const port = process.env.PORT || 8000;
 
 const homeFile = fs.readFileSync("home.html", "utf-8");
 
@@ -42,4 +42,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(8000, "127.0.0.1");
+server.listen(port, () => {
+  console.log(`listening to the port no at ${port}`);
+})
